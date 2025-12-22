@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tycoon Game</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Custom tweaks on top of Bootstrap */
+#log-list li {
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; height: 0; margin: 0; padding: 0; }
+}
+.rainbow-text {
+  font-size: 3rem;
+  font-weight: bold;
+  animation: colorChange 3s infinite;
+}
+
+/* Define the animation */
+@keyframes colorChange {
+  0%   { color: red; }
+  25%  { color: orange; }
+  50%  { color: yellow;}
+  75%  { color: green; }
+  100%  { color: blue; }
+}
+  </style>
+</head>
+<body class="bg-light">
+
+  <header class="bg-dark text-white text-center py-3">
+    <h1>💼 Your Business Tycoon😏💵💰</h1>
+  </header>
+
+  <main class="container my-4">
+    <!-- Stats -->
+    <section id="stats" class="mb-4">
+      <div class="card p-3">
+        <p class="mb-1">Money: $<span id="money">100</span></p>
+        <p class="mb-1">Businesses Owned: <span id="businesses">0</span></p>
+        <p class="mb-1">Managers: <span id="managers">0</span></p>
+      </div>
+    </section>
+
+
+    <!-- Actions -->
+    <section id="actions" class="mb-4">
+      <div class="d-grid gap-2 d-md-block">
+        <button id="earn-btn" class="btn btn-success">Earn $10</button>
+        <button id="buy-btn" class="btn btn-primary">Buy Business ($50)</button>
+        <button id="upgrade-btn" class="btn btn-warning">Upgrade Business ($100)</button>
+        <button id="manager-btn" class="btn btn-info">Hire Manager ($200)</button>
+        <button id="marketing-btn" class="btn btn-secondary">Invest in Marketing ($150)</button>
+        <button id="restart-btn" class="btn btn-danger">End/Restart Game🏁($100B)</button>
+      </div>
+    </section>
+
+    <!-- Game Log -->
+    <section id="log">
+      <h2>Game Log</h2>
+      <ul id="log-list" class="list-group"></ul>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-2">
+    <p>&copy; 2025 Tycoon Simulation</p>
+  </footer>
+  <script>
+    let money = 100;
+let businesses = 0;
+let incomePerBusiness = 5;
+let managers = 0;
+let marketingBoost = 1;
+
+const moneyEl = document.getElementById("money");
+const businessesEl = document.getElementById("businesses");
+const managersEl = document.getElementById("managers");
+const logList = document.getElementById("log-list");
+
+function updateStats() {
+  moneyEl.textContent = money.toLocaleString();
+  businessesEl.textContent = businesses;
+  managersEl.textContent = managers;
+}
+
+function logAction(action) {
+  const li = document.createElement("li");
+  li.textContent = action;
+  li.className = "list-group-item";
+  logList.appendChild(li);
+  setTimeout(() => li.remove(), 5000);
+}
+
+document.getElementById("earn-btn").addEventListener("click", () => {
+  money += 10;
+  updateStats();
+  logAction("You earned $10 manually.");
+});
+
+document.getElementById("buy-btn").addEventListener("click", () => {
+  if (money >= 50) {
+    money -= 50;
+    businesses++;
+    updateStats();
+    logAction("You bought a new business!");
+  } else {
+    logAction("Not enough money to buy a business.");
+  }
+});
+
+document.getElementById("upgrade-btn").addEventListener("click", () => {
+  if (money >= 100 && businesses > 0) {
+    money -= 100;
+    incomePerBusiness += 5;
+    updateStats();
+    logAction("You upgraded your businesses! Income per business increased.");
+  } else {
+    logAction("Need at least 1 business and $100 to upgrade.");
+  }
+});
+
+document.getElementById("manager-btn").addEventListener("click", () => {
+  if (money >= 200) {
+    money -= 200;
+    managers++;
+    updateStats();
+    logAction("You hired a manager! Passive income increased.");
+  } else {
+    logAction("Not enough money to hire a manager.");
+  }
+});
+
+document.getElementById("marketing-btn").addEventListener("click", () => {
+  if (money >= 150) {
+    money -= 150;
+    marketingBoost = 2;
+    updateStats();
+    logAction("Marketing campaign started! Income doubled for 10 seconds.");
+
+    setTimeout(() => {
+      marketingBoost = 1;
+      logAction("Marketing campaign ended. Income back to normal.");
+    }, 10000);
+  } else {
+    logAction("Not enough money for marketing.");
+  }
+});
+
+document.getElementById("restart-btn").addEventListener("click", () => {
+  if (money >= 100000000000) {
+    logAction("You ended the game and restarted!");
+    money = 100;
+    businesses = 0;
+    managers = 0;
+    incomePerBusiness = 5;
+    marketingBoost = 1;
+    updateStats();
+  } else {
+    logAction("You need $100,000,000,000 to restart the game.");
+  }
+});
+
+setInterval(() => {
+  if (businesses > 0) {
+    const income = businesses * incomePerBusiness * (1 + managers * 0.5) * marketingBoost;
+    money += income;
+    updateStats();
+    logAction(`Your businesses generated $${income.toLocaleString()}.`);
+  }
+}, 3000);
+
+updateStats();
+  </script>
+  <br>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Changing Text</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h6 class="rainbow-text">-Website Created by Saisuvan Magesh</h6>
+
+</body>
+</br>
+</html>

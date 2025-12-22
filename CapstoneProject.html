@@ -1,22 +1,114 @@
-<html>
-    <head>
-        <title>
-        Capstone Project
-        </title>
-    </head>
-    <body>
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
-        <div class="progress">
-            <div class="progress-bar bg-danger" style="width:80%"></div>
-            <navbar>
-                <nav src="CapstoneProject.html"></nav>
-            </navbar>
-        </div>
-       </nav>
-       <img src="IMG_8110.jpg">
-       <p></p>
-       <ol>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f9;
+  color: #333;
+}
 
-       </ol>
-    </body>
+header {
+  background: #4CAF50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+form input, form button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: white;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button.buy-btn {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛒 Mini Marketplace</h1>
+  </header>
+
+  <main>
+    <!-- Form to add items -->
+    <section id="sell-section">
+      <h2>Sell an Item</h2>
+      <form id="sell-form">
+        <input type="text" id="item-name" placeholder="Item name" required>
+        <input type="number" id="item-price" placeholder="Price ($)" required>
+        <button type="submit">Add Item</button>
+      </form>
+    </section>
+
+    <!-- Items for sale -->
+    <section id="buy-section">
+      <h2>Items for Sale</h2>
+      <ul id="items-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mini Marketplace</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const form = document.getElementById("sell-form");
+const itemsList = document.getElementById("items-list");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("item-name").value;
+  const price = document.getElementById("item-price").value;
+
+  // Create item element
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span>${name} - $${price}</span>
+    <button class="buy-btn">Buy</button>
+  `;
+
+  // Add buy functionality
+  li.querySelector(".buy-btn").addEventListener("click", () => {
+    alert(`You bought ${name} for $${price}!`);
+    li.remove(); // remove item after purchase
+  });
+
+  itemsList.appendChild(li);
+
+  // Reset form
+  form.reset();
+});
+  </script>
+</body>
 </html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NovaTech Solutions</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #1e293b;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+nav a {
+  margin-left: 1rem;
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+.section {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #38bdf8;
+}
+
+button {
+  background: #38bdf8;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #0ea5e9;
+}
+
+.service-list, .product-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: #1e293b;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.form {
+  margin-top: 2rem;
+  background: #1e293b;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1e293b;
+  margin-top: 2rem;
+}
+/* Hide default cursor */
+body {
+  cursor: none;
+}
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+
+  background: radial-gradient(circle,
+      rgba(0, 245, 255, 0.9),
+      rgba(255, 0, 122, 0.4),
+      rgba(0, 0, 0, 0));
+
+  filter: blur(10px);
+  transform: translate(-50%, -50%);
+}
+
+button {
+  transition: 0.25s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 12px #38bdf8, 0 0 24px #0ea5e9;
+  transform: translateY(-2px);
+}
+.card {
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 2px;
+  background: linear-gradient(135deg, #38bdf8, #ff007a, #38bdf8);
+  background-size: 300% 300%;
+  animation: borderGlow 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+body {
+  background: radial-gradient(circle at top left, #0f172a, #020617 60%);
+  background-size: 120%;
+}
+:root {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --card-bg: #1e293b;
+  --accent: #38bdf8;
+}
+
+.light-mode {
+  --bg: #f1f5f9;
+  --text: #0f172a;
+  --card-bg: #ffffff;
+  --accent: #0ea5e9;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+header, footer, .card, .form {
+  background: var(--card-bg);
+}
+
+.logo, h2, nav a:hover {
+  color: var(--accent);
+}
+
+button {
+  background: var(--accent);
+}
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+.rainbow-mode {
+  --bg: #000000;
+  --text: #ffffff;
+  --card-bg: rgba(0,0,0,0.4);
+  --accent: #ffffff;
+}
+.rainbow-mode {
+  animation: rainbowBG 6s linear infinite;
+}
+
+@keyframes rainbowBG {
+  0% { background-color: #ff007a; }
+  20% { background-color: #ff8800; }
+  40% { background-color: #ffee00; }
+  60% { background-color: #00ff88; }
+  80% { background-color: #0099ff; }
+  100% { background-color: #ff00ff; }
+}
+.rainbow-mode {
+  --accent: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+}
+
+.logo, h2, nav a:hover {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.rainbow-mode .cursor-glow {
+  background: radial-gradient(circle,
+      rgba(255, 0, 122, 0.9),
+      rgba(255, 255, 0, 0.7),
+      rgba(0, 255, 0, 0.6),
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 0, 255, 0.4));
+}
+.speed-lines {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 10px,
+    rgba(255,255,255,0.1) 10px,
+    rgba(255,255,255,0.1) 20px
+  );
+  animation: moveLines 0.5s linear infinite;
+}
+
+@keyframes moveLines {
+  from { background-position: 0 0; }
+  to { background-position: 100px 0; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="cursor-glow"></div>
+
+  <header>
+    <h1 class="logo">NovaTech</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+      <a href="#Games">Games</a>
+    </nav>
+  </header>
+
+  <section id="home" class="section">
+    <h2>Innovating the Future</h2>
+    <p>NovaTech builds modern software solutions for businesses worldwide.</p>
+    <button id="learnMoreBtn">Explore Services</button>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="service-list" id="serviceList">
+      <!-- Filled by JavaScript -->
+    </div>
+
+    <div class="form">
+      <h3>Add a Service</h3>
+      <input id="serviceName" type="text" placeholder="Service Name">
+      <input id="serviceDesc" type="text" placeholder="Short Description">
+      <button id="addServiceBtn">Add Service</button>
+    </div>
+  </section>
+<section id="products" class="section">
+  <div class="form">
+    <h3>Add a Product</h3>
+    <input id="productName" type="text" placeholder="Product Name">
+    <input id="productPrice" type="number" placeholder="Price ($)">
+    <button id="addProductBtn">Add Product</button>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea placeholder="Your Message"></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+<section id="Games">
+  <h2>Games! Created by Me</h2>
+
+  <div class="Games-list" data-aos="flip-up">
+    <div class="card shadow">
+      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project 1">
+
+      <div class="card-body">
+        <h5 class="card-title">ZombieLand Game in Scratch</h5>
+        <p class="card-text">Scratch Game I made</p>
+
+        <a class="btn btn-primary" href="https://scratch.mit.edu/projects/1134643953/" target="_blank">
+          View Project
+        </a>
+      </div> <!-- closes card-body -->
+
+    </div> <!-- closes card shadow -->
+
+  </div> <!-- closes Games-list -->
+
+</section> <!-- closes Games section -->
+
+<button id="themeToggle" class="theme-toggle">🌙</button>
+<button id="rainbowToggle" class="theme-toggle">🌈</button>
+  <footer>
+    <p>© 2025 NovaTech Solutions</p>
+    <br>
+    <strong><p>-Made all with Heart❤️, all credits go to Saisuvan Magesh for making this entire project.</p></strong>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Default services
+const services = [
+  { name: "AI Development", desc: "Custom AI tools for business automation." },
+  { name: "Web Applications", desc: "Modern, scalable web platforms." }
+];
+
+// Default products
+const products = [
+  { name: "NovaChat AI", price: 49 },
+  { name: "TaskFlow Manager", price: 29 }
+];
+
+const serviceList = document.getElementById("serviceList");
+const productList = document.getElementById("productList");
+
+// Render services
+function renderServices() {
+  serviceList.innerHTML = "";
+  services.forEach(s => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<h3>${s.name}</h3><p>${s.desc}</p>`;
+    serviceList.appendChild(card);
+  });
+}
+
+// Render products
+function renderProducts() {
+  productList.innerHTML = "";
+  products.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<h3>${p.name}</h3><p>$${p.price}</p>`;
+    productList.appendChild(card);
+  });
+}
+
+renderServices();
+renderProducts();
+
+// Add service
+document.getElementById("addServiceBtn").addEventListener("click", () => {
+  const name = document.getElementById("serviceName").value.trim();
+  const desc = document.getElementById("serviceDesc").value.trim();
+
+  if (!name || !desc) return alert("Fill both fields");
+
+  services.push({ name, desc });
+  renderServices();
+});
+
+// Add product
+document.getElementById("addProductBtn").addEventListener("click", () => {
+  const name = document.getElementById("productName").value.trim();
+  const price = Number(document.getElementById("productPrice").value);
+
+  if (!name || !price) return alert("Fill both fields");
+
+  products.push({ name, price });
+  renderProducts();
+});
+
+// Smooth scroll
+document.getElementById("learnMoreBtn").addEventListener("click", () => {
+  document.getElementById("services").scrollIntoView({ behavior: "smooth" });
+});
+const glow = document.querySelector(".cursor-glow");
+
+let x = 0, y = 0;
+let targetX = 0, targetY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  targetX = e.clientX;
+  targetY = e.clientY;
+});
+
+function animate() {
+  // Smooth follow speed (0.15 = fast, 0.05 = slow)
+  x += (targetX - x) * 0.15;
+  y += (targetY - y) * 0.15;
+
+  glow.style.transform = `translate(${x}px, ${y}px)`;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+const sections = document.querySelectorAll(".section");
+
+function revealSections() {
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      sec.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealSections);
+revealSections();
+document.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 10;
+  const y = (e.clientY / window.innerHeight - 0.5) * 10;
+  document.body.style.backgroundPosition = `${x}px ${y}px`;
+});
+const toggleBtn = document.getElementById("themeToggle");
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  // Change icon
+  if (document.body.classList.contains("light-mode")) {
+    toggleBtn.textContent = "☀️";
+  } else {
+    toggleBtn.textContent = "🌙";
+  }
+});
+const rainbowBtn = document.getElementById("rainbowToggle");
+
+rainbowBtn.addEventListener("click", () => {
+  document.body.classList.toggle("rainbow-mode");
+
+  // Turn off light mode if rainbow is on
+  if (document.body.classList.contains("rainbow-mode")) {
+    document.body.classList.remove("light-mode");
+  }
+});
+
+</script>
+
+</body>
+</html>
